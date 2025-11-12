@@ -30,4 +30,17 @@ public class CategoriaService {
         return lista;
     }
 
+    @Transactional
+    public void save (Categoria categoria){
+        categoriaRepository.save(categoria);
+    }
+    
+    @Transactional(readOnly=true)
+    public Categoria getCategoria(Categoria categoria){
+        return categoriaRepository.findById(categoria.getIdCategoria()).orElse(null);
+        
+    }
+    
+    
+    
 }
