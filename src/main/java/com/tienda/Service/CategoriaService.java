@@ -40,6 +40,10 @@ public class CategoriaService {
         return categoriaRepository.findById(categoria.getIdCategoria()).orElse(null);
         
     }
+
+    public boolean delete(Categoria categoria) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
     

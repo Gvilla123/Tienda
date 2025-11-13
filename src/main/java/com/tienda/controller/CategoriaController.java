@@ -52,6 +52,14 @@ public class CategoriaController {
         return "/categoria/modifica";
 
 }
+
+    /**
+     *
+     * @param categoria
+     * @param imagenFile
+     * @param redirectAttrs
+     * @return
+     */
     @PostMapping("/guardar")
     public String guardar(Categoria categoria,
             @RequestParam("imagenFile") MultipartFile imagenFile,
@@ -59,10 +67,8 @@ public class CategoriaController {
 
         if (!imagenFile.isEmpty()) {
             categoriaService.save(categoria);
-            String rutaImagen = firebaseStorageService.cargaImagen(
-                    imagenFile,
-                    "categoria",
-                    categoria.getIdCategoria());
+            String rutaImagen;
+            rutaImagen = firebaseStorageService.cargaImagen(imagenFile,"categoria",categoria.getIdCategoria());
             categoria.setRutaImagen(rutaImagen);
         }
 
@@ -83,12 +89,14 @@ public class CategoriaController {
         if (categoria == null) {
             redirectAttrs.addFlashAttribute("error", messageSource.getMessage("categoria.error01", null, Locale.getDefault()));
         } else if (false) {
-            redirectAttrs.addFlashAttribute("error", messageSource.getMessage("categoria.error02", null, Locale.getDefault()));
-        } else if (categoriaService.delete(categoria)) {
-            redirectAttrs.addFlashAttribute("todoOk", messageSource.getMessage("categoria.eliminado", null, Locale.getDefault()));
-        } else {
+            
+            redirectAttrs.addFlashAttribu te("error", messageSource.getMessage("categoria.error02", null, Locale.getDefault()));
+        } else if (!categoriaService.delete(categoria)) {
             redirectAttrs.addFlashAttribute("error", messageSource.getMessage("categoria.error03", null, Locale.getDefault()));
+        } else {
+            redirectAttrs.addFlashAttribute("todoOk", messageSource.getMessage("categoria.eliminado", null, Locale.getDefault()));
         }
+        
         return "redirect:/categoria/listado";
 
         /* va en lugar del false... categoria.getProductos() != null && !categoria.getProductos().isEmpty()*/
