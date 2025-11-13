@@ -91,7 +91,7 @@ public class ProductoController {
             redirectAttrs.addFlashAttribute("error", messageSource.getMessage("producto.error01", null, Locale.getDefault()));
         } else if (false) {
             
-            redirectAttrs.addFlashAttribu te("error", messageSource.getMessage("producto.error02", null, Locale.getDefault()));
+            redirectAttrs.addFlashAttribute("error", messageSource.getMessage("producto.error02", null, Locale.getDefault()));
         } else if (!productoService.delete(producto)) {
             redirectAttrs.addFlashAttribute("error", messageSource.getMessage("producto.error03", null, Locale.getDefault()));
         } else {

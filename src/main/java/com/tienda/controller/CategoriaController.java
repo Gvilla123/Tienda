@@ -90,7 +90,7 @@ public class CategoriaController {
             redirectAttrs.addFlashAttribute("error", messageSource.getMessage("categoria.error01", null, Locale.getDefault()));
         } else if (false) {
             
-            redirectAttrs.addFlashAttribu te("error", messageSource.getMessage("categoria.error02", null, Locale.getDefault()));
+            redirectAttrs.addFlashAttribute("error", messageSource.getMessage("categoria.error02", null, Locale.getDefault()));
         } else if (!categoriaService.delete(categoria)) {
             redirectAttrs.addFlashAttribute("error", messageSource.getMessage("categoria.error03", null, Locale.getDefault()));
         } else {

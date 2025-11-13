@@ -54,6 +54,15 @@ public class ProductoService {
         
     }
     
-    
-    
+@Transactional(readOnly=true)
+public List<Producto> findByPrecioBetweenOrderByDescripcion(double precioInf, double precioSup) {
+  return productoRepository.findByPrecioBetweenOrderByDescripcion(precioInf, precioSup);
+}
+
+
+    @Transactional(readOnly=true)    
+    public List<Producto> metodoJPQL(double precioInf, double precioSup) {
+        return productoRepository.metodoJPQL(precioInf, precioSup);
+    }
+
 }
