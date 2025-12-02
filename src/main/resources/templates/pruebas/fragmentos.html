@@ -98,11 +98,36 @@
                     </form>
                 </div>
                 
+                <!-- NUEVA TARJETA: CONSULTAS NATIVAS -->
+                <div class="col-md-3">
+                    <form method="POST" th:action="@{/pruebas/query3}" 
+                          class="was-validated">
+                        <div class="card">                            
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="precioInf">[[#{pruebas.precio.inferior}]]</label>
+                                    <input type="number" class="form-control" 
+                                           th:value="${precioInf}"
+                                           th:name="precioInf" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="precioSup">[[#{pruebas.precio.superior}]]</label>
+                                    <input type="number" class="form-control" 
+                                           th:value="${precioSup}"
+                                           th:name="precioSup" required="true"/>
+                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button type="submit" class="btn btn-dark">
+                                    <i class="fas fa-check"></i> [[#{pruebas.nativa}]]
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 
-                     
-                
-                
-</section>
+            </div>
+        </section>
  
         
         
